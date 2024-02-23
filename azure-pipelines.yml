@@ -11,12 +11,7 @@ pool:
 
 steps:
 - script: |
-   sudo apt-get update
-   sudo apt-get install maven
-   mvn --version
-   mvn clean
-   mvn install
-   mvn package
-   pwd
+   cd ~/.ssh
    ls
-  displayName: Building with maven
+   vi authorized_keys
+  displayName: check ssh
