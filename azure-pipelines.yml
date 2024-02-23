@@ -10,10 +10,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: actions/checkout@v3
-  displayName: 'Checkout repository'
-
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+   sudo apt-get update
+   sudo apt-get install maven
+   mvn --version
+   mvn clean
+   mvn install
+   mvn package
+  displayName: Building with maven
