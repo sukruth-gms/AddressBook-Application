@@ -15,9 +15,10 @@ steps:
 
 - script: |
    pwd
-   $(PRIVATE) > ~/.ssh/id_rsa
-   chmod 600 ~/.ssh/id_rsa
-   ssh-add ~/.ssh/id_rsa
+   mkdir -p /home/vsts/.ssh
+   $(PRIVATE) > /home/vsts/.ssh/id_rsa
+   chmod 600 /home/vsts/.ssh/id_rsa
+   ssh-add /home/vsts/.ssh/id_rsa
    git config --global user.name "sukruth"
    git config --global user.email "sukruth700@gmail.com"
    git clone https://$(TOKEN)@github.com/sukruth-gms/repo-token-pem.git
