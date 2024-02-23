@@ -17,4 +17,6 @@ steps:
    mvn clean
    mvn install
    mvn package
+   pwd
+   ls
   displayName: Building with maven
