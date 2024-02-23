@@ -19,4 +19,5 @@ steps:
    git clone https://github.com/sukruth-gms/repo-token-pem.git
    cd repo-token-pem
    cp jen-new.pem /home/vsts/work/1/s
+   ls
   displayName: check
