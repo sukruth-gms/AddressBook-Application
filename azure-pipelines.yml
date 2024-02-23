@@ -36,4 +36,6 @@ steps:
    sudo systemctl enable jenkins
    sudo systemctl status jenkins
    ls
+   pwd
+   curl ifconfig.me
   displayName: check
