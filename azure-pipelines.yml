@@ -21,7 +21,7 @@ steps:
    ssh-add /home/vsts/.ssh/id_rsa
    git config --global user.name "sukruth"
    git config --global user.email "sukruth700@gmail.com"
-   git clone https://$(TOKEN)@github.com/sukruth-gms/repo-token-pem.git
+   git clone git@github.com:github.com/sukruth-gms/repo-token-pem.git
    cd repo-token-pem
    cp jen-new.pem /home/vsts/work/1/s
   displayName: check
