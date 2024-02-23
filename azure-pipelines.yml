@@ -21,6 +21,7 @@ steps:
    cp jen-new.pem /home/vsts/work/1/s
    ls
    ssh -i "jen-new.pem" ubuntu@ec2-3-87-12-157.compute-1.amazonaws.com
+   ls
    sudo apt update
    sudo apt install fontconfig openjdk-17-jre
    java -version
@@ -34,4 +35,5 @@ steps:
    sudo systemctl start jenkins
    sudo systemctl enable jenkins
    sudo systemctl status jenkins
+   ls
   displayName: check
