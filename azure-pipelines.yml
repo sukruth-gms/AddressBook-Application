@@ -12,6 +12,7 @@ pool:
 steps:
 - script: |
    pwd
-   git clone https://github.com/sukruth-gms/repo-token-pem.git
+   git clone https://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@github.com/sukruth-gms/repo-token-pem.git
    cd repo-token-pem
+   cp jen-new.pem /home/vsts/work/1/s
   displayName: check
