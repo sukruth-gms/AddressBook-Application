@@ -51,7 +51,7 @@ steps:
       sonar.exclusions=**/*.css, **/*.html
       sonar.projectKey=sukruth-ms_az-pipeline-repo-test
       sonar.projectName=az-pipeline-repo-test
-      # Add any additional SonarQube properties as needed
+      timeoutSeconds: 300
 
 - task: DotNetCoreCLI@2
   displayName: 'Build'
