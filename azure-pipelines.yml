@@ -31,6 +31,9 @@ steps:
       sonar.projectName=az-pipeline-repo-test
       timeoutSeconds: 300
       sonar.verbose=true
+      sonar.scanner.dumpToFile=true
+  env:
+    SONAR_SCANNER_OPTS: '-X'
 
 - task: SonarCloudAnalyze@1
 
