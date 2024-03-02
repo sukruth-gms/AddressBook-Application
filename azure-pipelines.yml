@@ -55,7 +55,7 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '6.0' # Replace with the version you want to use
+    version: '6.x' # Replace with the version you want to use
     installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: DotNetCoreCLI@2
