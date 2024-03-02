@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  java.version: '8.x'  # Specify the Java version
+
 steps:
 - checkout: self
   fetchDepth: 0
@@ -18,8 +21,15 @@ steps:
    git config --global user.email "sukruth700@gmail.com"
    curl ifconfig.me
    echo "SONAR ANALYSIS"
+   java --version
   displayName: check
 
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '$(java.version)'
+    jdkArchitectureOption: 'x86'
+    jdkSourceOption: 'PreInstalled'
+    
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'new-sonar'
@@ -30,6 +40,7 @@ steps:
       sonar.projectKey=sukruth-ms_az-pipeline-repo-test
       sonar.projectName=az-pipeline-repo-test
       timeoutSeconds: 300
+
 - task: Maven@3
   displayName: 'Maven Build'
   inputs:
