@@ -54,7 +54,7 @@ steps:
   displayName: 'Maven Build'
   inputs:
     mavenPomFile: 'pom.xml'  # Specify the path to your Maven POM file
-    goals: 'clean install package'
+    goals: 'clean install sonar:sonar package'
 
 - task: SonarCloudAnalyze@1
 
