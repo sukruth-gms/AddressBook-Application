@@ -39,3 +39,28 @@ steps:
    pwd
    curl ifconfig.me
   displayName: check
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'new-sonar'
+    organization: 'sonar-org-ad'
+    scannerMode: 'MSBuild'
+    projectKey: 'sukruth-ms_az-pipeline-repo-test'
+    projectName: 'az-pipeline-repo-test'
+    extraProperties: |
+      sonar.exclusions=**/*.css, **/*.html
+      sonar.projectKey=sukruth-ms_az-pipeline-repo-test
+      sonar.projectName=az-pipeline-repo-test
+      # Add any additional SonarQube properties as needed
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
