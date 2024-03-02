@@ -29,9 +29,9 @@ steps:
       sonar.exclusions=**/*.css, **/*.html
       sonar.projectKey=sukruth-ms_az-pipeline-repo-test
       sonar.projectName=az-pipeline-repo-test
-      timeoutSeconds: 300
       sonar.verbose=true
       sonar.scanner.dumpToFile=true
+      sonar.ws.timeout=300
   env:
     SONAR_SCANNER_OPTS: '-X'
 
