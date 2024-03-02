@@ -50,6 +50,8 @@ steps:
     sqMavenPluginVersionChoice: 'latest'
 
 - task: SonarCloudAnalyze@1
+  env:
+    SONAR_SCANNER_OPTS: '-X'
 
 - task: SonarCloudPublish@1
   inputs:
