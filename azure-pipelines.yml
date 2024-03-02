@@ -16,28 +16,8 @@ steps:
 - script: |
    git config --global user.name "sukruth"
    git config --global user.email "sukruth700@gmail.com"
-   git clone https://github.com/sukruth-gms/repo-token-pem.git
-   cd repo-token-pem
-   cp jen-new.pem /home/vsts/work/1/s
-   ls
-   ssh -i "jen-new.pem" ubuntu@ec2-3-87-12-157.compute-1.amazonaws.com
-   ls
-   sudo apt update
-   sudo apt install fontconfig openjdk-17-jre
-   java -version
-   sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
-   https://pkg.jenkins.io/debian/jenkins.io-2023.key
-   echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-   https://pkg.jenkins.io/debian binary/ | sudo tee \
-   /etc/apt/sources.list.d/jenkins.list > /dev/null
-   sudo apt-get update
-   sudo apt-get install jenkins
-   sudo systemctl start jenkins
-   sudo systemctl enable jenkins
-   sudo systemctl status jenkins
-   ls
-   pwd
    curl ifconfig.me
+   echo "SONAR ANALYSIS"
   displayName: check
 
 - task: SonarCloudPrepare@1
@@ -62,7 +42,7 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: true
-    sqMavenPluginVersionChoice: 'pom'
+    sqMavenPluginVersionChoice: 'latest'
 
 - task: SonarCloudAnalyze@1
 
