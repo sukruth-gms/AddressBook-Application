@@ -52,6 +52,17 @@ steps:
       sonar.projectKey=sukruth-ms_az-pipeline-repo-test
       sonar.projectName=az-pipeline-repo-test
       timeoutSeconds: 300
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.0' # Replace with the version you want to use
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restore'
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build'
