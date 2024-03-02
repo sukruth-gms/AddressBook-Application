@@ -51,7 +51,7 @@ steps:
 
 - task: SonarCloudAnalyze@1
   env:
-    SONAR_SCANNER_OPTS: '-X'
+    SONAR_SCANNER_OPTS: '-Xss2M'
 
 - task: SonarCloudPublish@1
   inputs:
