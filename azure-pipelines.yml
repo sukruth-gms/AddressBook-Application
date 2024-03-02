@@ -10,15 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  java.version: '8.x'  # Specify the Java version
+  java.version: '8.x'
 
 steps:
 - checkout: self
   fetchDepth: 0
 
 - script: |
-   git config --global user.name "sukruth"
-   git config --global user.email "sukruth700@gmail.com"
    curl ifconfig.me
    echo "SONAR ANALYSIS"
    java --version
@@ -26,9 +24,11 @@ steps:
 
 - task: JavaToolInstaller@0
   inputs:
-    versionSpec: '$(java.version)'
+    versionSpec: '$(JAVA_VERSION)'
     jdkArchitectureOption: 'x86'
     jdkSourceOption: 'LocalDirectory'
+    jdkFile: 'sukruth-gms/DevOpsClassCodes'
+    jdkDestinationDirectory: 'sukruth-gms/DevOpsClassCodes'
     cleanDestinationDirectory: true
     
 - task: SonarCloudPrepare@1
