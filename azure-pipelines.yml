@@ -44,25 +44,17 @@ steps:
   inputs:
     SonarCloud: 'new-sonar'
     organization: 'sonar-org-ad'
-    scannerMode: 'MSBuild'
-    projectKey: 'sukruth-ms_az-pipeline-repo-test'
-    projectName: 'az-pipeline-repo-test'
+    scannerMode: 'Other'
     extraProperties: |
       sonar.exclusions=**/*.css, **/*.html
       sonar.projectKey=sukruth-ms_az-pipeline-repo-test
       sonar.projectName=az-pipeline-repo-test
       timeoutSeconds: 300
-- task: UseDotNet@2
+- task: Maven@3
+  displayName: 'Maven Build'
   inputs:
-    packageType: 'sdk'
-    version: '5.x' # Replace with the version you want to use
-    installationPath: $(Agent.ToolsDirectory)/dotnet
-
-- task: DotNetCoreCLI@2
-  displayName: 'Build'
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
+    mavenPomFile: 'pom.xml'  # Specify the path to your Maven POM file
+    goals: 'clean install'
 
 - task: SonarCloudAnalyze@1
 
