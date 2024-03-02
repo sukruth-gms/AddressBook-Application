@@ -9,9 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  java.version: '8.x'
-
 steps:
 - checkout: self
   fetchDepth: 0
@@ -22,39 +19,17 @@ steps:
    java --version
   displayName: check
 
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '$(JAVA_VERSION)'
-    jdkArchitectureOption: 'x86'
-    jdkSourceOption: 'LocalDirectory'
-    jdkFile: 'sukruth-gms/DevOpsClassCodes'
-    jdkDestinationDirectory: 'sukruth-gms/DevOpsClassCodes'
-    cleanDestinationDirectory: true
-    
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'new-sonar'
     organization: 'sonar-org-ad'
-    scannerMode: 'Other'
+    scannerMode: 'CLI'
+    configMode: 'file'
     extraProperties: |
       sonar.exclusions=**/*.css, **/*.html
       sonar.projectKey=sukruth-ms_az-pipeline-repo-test
       sonar.projectName=az-pipeline-repo-test
       timeoutSeconds: 300
-
-- task: Maven@3
-  displayName: 'Maven Build'
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'clean install sonar:sonar package'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: true
-    sqMavenPluginVersionChoice: 'latest'
 
 - task: SonarCloudAnalyze@1
 
